@@ -1,0 +1,15 @@
+/* This file will hold styles that are loaded using the same media query as the normal grid. */
+/* If you are using the default media queries provided by Omega, these styles will also
+ *  apply to the widescreen layout unless they are overridden by the widescreen styles. */
+ 
+ 
+ .view-acf-projects img {
+  width: 550px;
+  height: 236px;  
+}
+
+
+.node-page .field-name-field-image img {
+  width: 600px;
+  height: 571px;  
+}

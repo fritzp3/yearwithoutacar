@@ -1,0 +1,114 @@
+/**
+ * @file
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+
+/* HTML element (SMACSS base) rules */
+@import "normalize.css";
+@import "pointnet_red_sun-mods.css";
+/* Layout rules */
+@import "layouts/responsive.css";
+
+/* Component (SMACSS module) rules */
+@import "components/misc.css";
+/* Optionally, add your own components here. */
+@import "print.css";
+
+/* SMACSS theme rules */
+/* @import "theme-A.css"; */
+/* @import "theme-B.css"; */
+
+
+
+html {
+  color: #333333;
+  font-family: Tahoma, Arial,sans-serif
+}
+
+.header__site-link:link, .header__site-link:visited, .header__site-slogan {
+  font-weight: normal;
+  color: #333;
+}
+
+.header__site-slogan {
+  font-weight: unset;
+  text-transform: none;
+  font-style: italic;
+  color: #666666;
+}
+
+.header__site-name, .header__site-slogan {
+  padding-left: unset;
+}
+
+#pointnet_red_sun_container {
+  background-image: url("../images/body_back-wheels2.jpg");
+}
+
+.header__logo-image, .header__logo-image:hover {
+  padding: 5px 10px 0 0 !important; 
+}
+
+.header__site-link:hover, .header__site-link:focus {
+  text-decoration: none;
+}
+
+.region-sidebar-first .item-list ul {
+  margin: 0;
+  padding: 5px 0 10px 10px; 
+}
+
+.region-sidebar-first .item-list ul li {
+  list-style: none;
+}
+
+li.node-readmore a:link, li.node-readmore a:active, li.node-readmore a:visited {
+  font-weight: normal;
+}
+
+#footer .block p {
+  line-height: 15px;
+  margin: 0;
+}
+
+#content {
+  padding: 0 80px 20px 40px;
+}
+
+.view-frontpage .node-readmore {
+    background-color: #e7e3da;
+    display: block !important;
+    text-align: right;
+    border-top: 1px;
+    border-top-color: rgb(214, 206, 190);
+    border-top-style: solid;
+    clear: both;
+    padding: 0 10px 2px 0;
+}
+
+.node-type-article .field-type-image {
+  float: none;
+}
+
+.comment-form .form-actions {
+  padding: 20px 0;
+}
+
+#admin-menu {
+  margin-right: 0
+}
+
+#footer-wrapper, #footer-wrapper a {
+  color: #333;
+  font-size: xx-small; 
+}
+
+#footer-wrapper a:hover {
+  color: #666666;
+}
+
+
+

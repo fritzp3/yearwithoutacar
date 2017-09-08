@@ -1,0 +1,142 @@
+<?php
+
+function ywac_strava_menu() {
+  $items = array();
+   $items['admin/config/ywac-strava'] = array(
+        'title' => 'YWAC Strava Config',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('ywac_strava_admin_form'),
+        'access arguments' => array('administer ywac_strava'),
+        'type' => MENU_NORMAL_ITEM
+   );
+   return $items;
+}
+
+
+function ywac_strava_admin_form() {
+
+  dsm('execute ywac_strava_admin_form'); 
+
+  $form = array();
+  $form['ywac_strava_client_id'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('Enter your Client ID'), 
+    '#size' => 50,
+    '#maxlength' => 50,
+    '#default_value' => variable_get('ywac_strava_client_id'),
+    '#description' => "Your Strava ID"
+  );
+
+  $form['ywac_strava_client_secret'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('Enter your Client Secret Key'),
+    '#size' => 40,
+    '#maxlength' => 40,
+    '#default_value' => variable_get('ywac_strava_client_secret'),
+    '#description' => "Your Strava Client Secrete"
+  );
+
+  return system_settings_form($form);
+}
+
+
+
+
+
+
+
+
+
+
+function ywac_strava_cron() {
+  watchdog('cron', 'execute ywac_strava_cron');
+  getStravaList(); 
+}
+
+
+
+
+
+
+
+function getStravaList() {
+  require_once 'StravaApi.php';
+  
+  $clientId = '12470'; 
+  $clientSecret = '75245247b9499e30728c5b42a314d813697c8ccb';
+  
+  $api = new Iamstuartwilson\StravaApi(
+    $clientId,
+    $clientSecret
+  );
+  
+  //$api->authenticationUrl($redirect, $approvalPrompt = 'auto', $scope = null, $state = null); -- don't know why this cause an error.
+  $api->setAccessToken('60aec726eebd5dd03f62eb958213c5d9e6c593f7');
+  $all_activities = $api->get('athlete/activities', ['per_page' => 30]);
+
+  foreach($all_activities as $activity) {
+
+    // Check if Activity already exists in the database. 
+    $array = array($activity->id);
+    $view = views_get_view('ywac_posts_list');
+    $view->set_display("individual");
+    $view->set_arguments($array);
+    $view->pre_execute();
+    $view->execute();
+    $count = count($view->result);
+
+    // if activity doesn't exist, create. 
+    if ( ($count == 0) && ($activity->type == "Ride") ) {
+      $activity_post = $api->get('activities/'.$activity->id);
+      $node = new stdClass(); 
+      $node->type = 'ywac_feed'; 
+      node_object_prepare($node); 
+      $node->language = LANGUAGE_NONE; 
+      $node->title = $activity_post->name; 
+      $node->body[$node->language][0]['value'] = $activity_post->description;
+      $node->created = strtotime($activity_post->start_date); 
+      $node->field_activity_id['und'][0]['value']= $activity_post->id;
+      $node->field_distance['und'][0]['value']= $activity_post->distance;
+      $node->field_moving_time['und'][0]['value']= $activity_post->moving_time;
+      $node->field_elapsed_time['und'][0]['value']= $activity_post->elapsed_time;
+      
+      if (isset($activity_post->photos->primary->urls->{'600'})) { 
+        $path = $activity_post->photos->primary->urls->{'600'}; 
+        $image = file_get_contents($path);
+        $name = basename($path);
+        $image = file_get_contents($path); // string  
+        $file = file_save_data($image, 'public://'.$name, FILE_EXISTS_REPLACE);
+        $node->field_photo[LANGUAGE_NONE]['0']['fid'] = $file->fid;
+      } 
+      
+      node_save($node); 
+
+    }
+  }
+  
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

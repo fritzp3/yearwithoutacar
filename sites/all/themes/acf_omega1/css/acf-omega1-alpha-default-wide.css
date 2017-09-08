@@ -1,0 +1,28 @@
+/* This file will hold styles that are loaded using the same media query as the wide grid. */
+
+
+
+body {
+  background-color: #0099CC;
+  background-image: url("../img/WebsiteBackground3.jpg");
+  background-position: center top;
+  background-repeat: repeat-y;
+  background-attachment: fixed; 
+  color: #999999; 
+  font-family: helvetica,verdana,arial,sans-serif;
+  font-size: 15px;  
+  text-transform: lowercase; 
+  background-size: 100% auto; 
+}
+
+
+.view-acf-projects img {
+  width: 700px;
+  height: 300px;  
+}
+
+
+.node-page .field-name-field-image img {
+  width: 700px;
+  height: 666px;  
+}

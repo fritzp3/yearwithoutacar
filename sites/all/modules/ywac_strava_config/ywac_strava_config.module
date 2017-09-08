@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the YWAC Strava Config feature.
+ */
+
+include_once 'ywac_strava_config.features.inc';

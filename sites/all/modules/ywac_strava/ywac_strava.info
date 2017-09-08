@@ -1,0 +1,5 @@
+name = YWAC Strava
+description = Strava data download and content creation.
+package = YWAC
+core = 7.x
+version = "7.x-0.1-dev"

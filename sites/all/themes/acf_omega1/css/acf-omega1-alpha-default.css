@@ -1,0 +1,156 @@
+/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+
+
+
+body {
+  background-color: #0099CC;
+  background-image: url("../img/WebsiteBackground3.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  color: #999999; 
+  font-family: helvetica,verdana,arial,sans-serif;
+  font-size: 15px;  
+  text-transform: lowercase; 
+}
+
+
+#admin-menu { 
+  margin: 0; 
+  padding: 0; 
+}
+
+
+header#section-header {
+  background-color: #0099CC;
+  height: 55px;
+  margin-top: 75px; 
+}
+
+
+#block-system-main-menu h2 {
+  display: none; 
+}
+
+
+#block-system-main-menu ul li {
+  display: inline; 
+}
+
+
+.site-name, #block-system-main-menu ul.menu { 
+  display: table-cell;
+  height: 55px; 
+  margin-top: auto;
+  vertical-align: bottom;
+}
+
+
+#block-system-main-menu ul.menu {
+  overflow: hidden; 
+}
+
+
+#block-system-main-menu ul.menu a {
+  color: #eeeeee;
+  font-size: 20px;
+  padding: 75px 5px 7px;
+  text-decoration: none;	
+}
+
+
+#block-system-main-menu ul.menu a:HOVER, #block-system-main-menu ul.menu a.active { 
+  background-color: #eeeeee;
+  color: #0099CC;
+}
+
+
+#block-system-main-menu .content { 
+  float: right; 
+}
+
+
+
+.site-name a { 
+  color: #eeeeee; 
+  font-family: helvetica,verdana,arial,sans-serif; 
+  
+}
+
+
+.region-content, #region-sidebar-first { 
+  background-image: url("../img/background-gray-transparent.png");
+  color: #EEEEEE;
+  text-transform: none;
+}
+
+
+#region-sidebar-first ul li {
+	list-style: none;
+	margin: 0; 
+}
+
+
+#region-sidebar-first a {
+	text-transform: lowercase; 
+	font-weight: bold; 
+}
+
+
+.region-content a:link, .region-content a:visited,
+.region-content h1, .region-content h1, 
+#region-sidebar-first a:link, #region-sidebar-first a:visited {
+  color: #0099CC;
+  font-family: helvetica,verdana,arial,sans-serif; 
+}
+
+#block-views-acf-projects-block-1 a {
+  font-size: small; 
+}
+
+#region-content h1, #block-system-main h2 a {
+  letter-spacing: 0; 
+  text-decoration: none; 
+}
+
+
+.region-content a:hover, #region-sidebar-first a:hover {
+  color: #0099cc;
+}
+
+
+#region-content .region-inner, 
+#region-sidebar-first .region-inner {
+	padding: 15px 30px; 
+} 
+
+
+#region-sidebar-first section h2 {
+	display: none;
+}
+
+
+#zone-content { 
+  padding-top: 80px; 
+}
+
+
+.region-content .view-acf-projects li, 
+.page-node .region-content .field-name-field-image  { 
+  padding-bottom: 20px !important; 
+}
+
+
+.region-content .view-acf-projects .views-field-field-image {
+	padding-bottom: 10px !important;
+}
+
+
+.region-content .view-acf-projects h2 {
+	margin-bottom: 0; 
+}
+
+
+.site-name-slogan { display: none; }
+
+
